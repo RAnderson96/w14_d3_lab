@@ -44,9 +44,15 @@ public class WhiskyTrackerApplicationTests {
 	@Test
 	public void canGetAllWhiskyFromADistilleryThatIsASpecificAge(){
 
-		Distillery particularDistillery = distilleryRepository.getById(1L);
-		List<Whisky> foundWhiskiesOfAnAge = whiskyRepository.findByDistilleryIdAndAge(1L, 2018);
+		Distillery particularDistillery = distilleryRepository.getById(11L);
+		List<Whisky> foundWhiskiesOfAnAge = whiskyRepository.findByDistilleryNameAndAge("Talisker", 1);
 		assertEquals(2, foundWhiskiesOfAnAge.size());
+	}
+	@Test
+	public void canGetAllWhiskyByRegion(){
+
+		List<Whisky> foundWhiskiesOfAnAge = whiskyRepository.findAllByDistilleryRegion("Island");
+		assertEquals(6, foundWhiskiesOfAnAge.size());
 	}
 
 }
